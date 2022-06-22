@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trekking", "Trekking\Trekking.csproj", "{BA9A0FC3-1217-47BA-8B03-7710A936DC1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trekking.Repository", "Trekking.Repository\Trekking.Repository.csproj", "{A3F8A958-CB23-449D-9F6E-B9B4929A5A34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA9A0FC3-1217-47BA-8B03-7710A936DC1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA9A0FC3-1217-47BA-8B03-7710A936DC1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA9A0FC3-1217-47BA-8B03-7710A936DC1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA9A0FC3-1217-47BA-8B03-7710A936DC1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3F8A958-CB23-449D-9F6E-B9B4929A5A34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3F8A958-CB23-449D-9F6E-B9B4929A5A34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3F8A958-CB23-449D-9F6E-B9B4929A5A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3F8A958-CB23-449D-9F6E-B9B4929A5A34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

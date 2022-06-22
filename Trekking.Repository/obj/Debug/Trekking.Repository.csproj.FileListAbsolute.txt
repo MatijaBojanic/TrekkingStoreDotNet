@@ -1,0 +1,6 @@
+C:\Users\matij\RiderProjects\Trekking\Trekking.Repository\bin\Debug\Trekking.Repository.dll
+C:\Users\matij\RiderProjects\Trekking\Trekking.Repository\bin\Debug\Trekking.Repository.pdb
+C:\Users\matij\RiderProjects\Trekking\Trekking.Repository\obj\Debug\Trekking.Repository.csproj.AssemblyReference.cache
+C:\Users\matij\RiderProjects\Trekking\Trekking.Repository\obj\Debug\Trekking.Repository.csproj.CoreCompileInputs.cache
+C:\Users\matij\RiderProjects\Trekking\Trekking.Repository\obj\Debug\Trekking.Repository.dll
+C:\Users\matij\RiderProjects\Trekking\Trekking.Repository\obj\Debug\Trekking.Repository.pdb
