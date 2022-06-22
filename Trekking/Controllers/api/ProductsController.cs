@@ -17,6 +17,14 @@ namespace Trekking.Controllers.api
         {
             return ProductService.GetProducts();
         }
+
+        
+        [Route("api/products")]
+        [HttpPost]
+        public bool? Store(ProductModel product) {
+            return  ProductService.CreateProduct(product);
+        }
+        
         
         [Route("api/products/{id}")]
         [HttpGet]
@@ -25,18 +33,11 @@ namespace Trekking.Controllers.api
             return ProductService.GetProductById(id);
         }
 
-        [Route("api/products")]
-        [HttpPost]
-        public bool? Store(ProductModel product)
-        {
-            return  ProductService.CreateProduct(product);
-        }
-
         [Route("api/products/{id}")]
         [HttpDelete]
-        public bool? Destroy(int productId)
+        public bool? Destroy(int id)
         {
-            return  ProductService.DeleteProduct(productId);
+            return  ProductService.DeleteProduct(id);
         }
         
         [Route("api/products/{id}")]

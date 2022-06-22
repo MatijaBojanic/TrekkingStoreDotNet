@@ -57,17 +57,17 @@ namespace Trekking.Services
                 
                 SqlCommand selectCommand = new SqlCommand();
                 selectCommand.Connection = connection;
-                selectCommand.CommandText = "SELECT * FROM products WHERE id = @ProductId";
+                selectCommand.CommandText = "SELECT * FROM products WHERE ID = @ProductId";
                 selectCommand.Parameters.AddWithValue("ProductId", productId);
                 SqlDataReader reader = selectCommand.ExecuteReader();
                 
                 ProductModel product = new ProductModel();
                 reader.Read();
                 
-                product.ProductID = reader.GetInt32(0);
-                product.Price = reader.GetDecimal(1);
-                product.Name = reader.GetString(2);
-                
+                product.Price = reader.GetDecimal(0);
+                product.Name = reader.GetString(1);
+                product.ProductID = reader.GetInt32(2);
+
 
                 connection.Close();
                 return product;
@@ -167,7 +167,7 @@ namespace Trekking.Services
                     deleteCommand.Connection = connection;
                     deleteCommand.CommandText = "DELETE FROM products WHERE " +
                                                 "id = @ProductID";
-                    deleteCommand.Parameters.AddWithValue("id", productId);
+                    deleteCommand.Parameters.AddWithValue("ProductID", productId);
 
                     int rowsAffected = deleteCommand.ExecuteNonQuery(); 
 
