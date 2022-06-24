@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using Trekking.Services;
 
 namespace Trekking.Controllers
 {
@@ -7,7 +6,7 @@ namespace Trekking.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.result = ProductService.GetProducts();
+            // ViewBag.result = ProductService.GetProducts();
             return View();
         }
         

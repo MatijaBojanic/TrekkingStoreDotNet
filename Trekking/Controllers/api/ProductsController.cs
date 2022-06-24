@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
-using Trekking.Models.DB;
+using Trekking.Repository.Models.DB;
 using Trekking.Services;
+
+// using Trekking.Services;
 
 namespace Trekking.Controllers.api
 {

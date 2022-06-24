@@ -79,3 +79,6 @@ C:\Users\matij\RiderProjects\Trekking\Trekking\obj\Debug\Trekking.csproj.Assembl
 C:\Users\matij\RiderProjects\Trekking\Trekking\obj\Debug\Trekking.csproj.CoreCompileInputs.cache
 C:\Users\matij\RiderProjects\Trekking\Trekking\obj\Debug\Trekking.dll
 C:\Users\matij\RiderProjects\Trekking\Trekking\obj\Debug\Trekking.pdb
+C:\Users\matij\RiderProjects\Trekking\Trekking\bin\Trekking.Repository.dll
+C:\Users\matij\RiderProjects\Trekking\Trekking\bin\Trekking.Repository.pdb
+C:\Users\matij\RiderProjects\Trekking\Trekking\obj\Debug\Trekking.csproj.CopyComplete

@@ -322,6 +322,12 @@
     <ItemGroup>
       <TypeScriptCompile Include="Scripts\index.d.ts" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Trekking.Repository\Trekking.Repository.csproj">
+        <Project>{a3f8a958-cb23-449d-9f6e-b9b4929a5a34}</Project>
+        <Name>Trekking.Repository</Name>
+      </ProjectReference>
+    </ItemGroup>
     <PropertyGroup>
         <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
         <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
