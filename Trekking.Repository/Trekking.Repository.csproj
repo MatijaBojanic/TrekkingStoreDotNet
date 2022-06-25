@@ -39,7 +39,9 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="DBOperations\ProductOperations.cs" />
+        <Compile Include="DBOperations\UserOperations.cs" />
         <Compile Include="Models\DB\ProductModel.cs" />
+        <Compile Include="Models\DB\UserModel.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
