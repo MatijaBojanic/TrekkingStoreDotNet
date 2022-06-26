@@ -38,6 +38,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="DBOperations\OrderOperations.cs" />
         <Compile Include="DBOperations\ProductOperations.cs" />
         <Compile Include="DBOperations\UserOperations.cs" />
         <Compile Include="Models\DB\Order.cs" />

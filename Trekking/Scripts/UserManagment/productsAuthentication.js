@@ -10,11 +10,6 @@
         modalButton.textContent = "Create Product"
         $("#createbuttonsec").append(modalButton)
         $("#createbuttonsec").show()
-        //results-section
-        //     < button
-        // className = "btn btn-primary"
-        // data - bs - toggle = "modal"
-        // data - bs - target = "#modalSignin" > MODAL < /button>
     }
     else{
     }

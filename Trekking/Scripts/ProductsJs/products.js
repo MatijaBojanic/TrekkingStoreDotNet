@@ -65,19 +65,14 @@ function createProductCard(product, productTable){
     cardBody.classList.add("card-body")
     let cardDescription = document.createElement('p')
     cardDescription.classList.add("card-text")
-    cardDescription.innerText = "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
+    cardDescription.innerText = product.Description 
     let cardDescriptionContainer = document.createElement("div")
     cardDescriptionContainer.classList.add("d-flex")
     cardDescriptionContainer.classList.add('justify-content-between')
     cardDescriptionContainer.classList.add("align-items-center")
     let cardButtons = document.createElement("div")
     cardButtons.classList.add("btn-group")
-    let buttonView = document.createElement('button')
-    buttonView.type = "button"
-    buttonView.classList.add("btn")
-    buttonView.classList.add('btn-sm')
-    buttonView.classList.add("btn-outline-secondary")
-    buttonView.innerText = "View"
+
 
     let buttonAddToCart= document.createElement('button')
     buttonAddToCart.type = "button"
@@ -87,6 +82,10 @@ function createProductCard(product, productTable){
     buttonAddToCart.classList.add("btn-outline-secondary")
     buttonAddToCart.innerText = "Add To Cart"
     buttonAddToCart.onclick = function() {
+        let trekkinguser = JSON.parse(localStorage.getItem('trekkinguser'));
+        if(!trekkinguser) {
+            window.location.href = "/user/login" 
+        }
         // TODO: Actually add it to the order
         console.log(product);
     }
@@ -95,16 +94,29 @@ function createProductCard(product, productTable){
     small.classList.add("text-muted")
     small.innerText = product.Name
 
-    cardButtons.appendChild(buttonView)
-    
+    cardButtons.appendChild(buttonAddToCart)
+
     let trekkinguser = JSON.parse(localStorage.getItem('trekkinguser'));
     if(trekkinguser?.Role==="admin") {
-    
+        let buttonDeleteProduct= document.createElement('button')
+        buttonDeleteProduct.type = "button"
+        buttonDeleteProduct.classList.add("deleteproductbutton")
+        buttonDeleteProduct.classList.add("btn")
+        buttonDeleteProduct.classList.add('btn-sm')
+        buttonDeleteProduct.classList.add("btn-outline-secondary")
+        buttonDeleteProduct.innerText = "Delete product"
+        buttonDeleteProduct.onclick = function() {
+            $.ajax({
+                type:"DELETE",
+                url:"http://localhost:5000/api/products/" + product.ProductId,
+                success: function(data){
+                    window.location.href = "/"
+                }
+            })
+        }
+        cardButtons.appendChild(buttonDeleteProduct)
     }
     
-    
-    
-    cardButtons.appendChild(buttonAddToCart)
 
     cardDescriptionContainer.appendChild(cardButtons)
     cardDescriptionContainer.appendChild(small)

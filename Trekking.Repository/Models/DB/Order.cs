@@ -7,6 +7,6 @@ namespace Trekking.Repository.Models.DB
         public int OrderId { get; set; }
         public int UserId { get; set; }
         public decimal Price { get; set; }
-        public DateTime PlacedAt { get; set; }
+        public DateTime? PlacedAt { get; set; }
     }
 }
