@@ -18,8 +18,26 @@ if(trekkinguser) {
                 getTotalPriceAndNumOfItems(orderItems, products)
             })
         })
+        
+        let checkoutButton = document.getElementById("checkoutbtnform")
+        checkoutButton.onclick = function (){
+            
+            $.ajax({
+                type:"PATCH",
+                url:"http://localhost:5000/api/order/checkout",
+                data:{ OrderId:order.OrderId},
+                success: function(data){
+                    alert('CHECKED OUT')
+                }
+            })
+            window.location.href = "/"
+        }
+        
+        
     })
 }
+
+
 
 async function fetchProductsJSON() {
     const response = await fetch('http://localhost:5000/api/products');
@@ -165,6 +183,3 @@ function getTotalPriceAndNumOfItems(orderItems, products){
     totalPriceResult.innerText = "€ " +totalPrice
 }
 
-function checkout(){
-    
-}

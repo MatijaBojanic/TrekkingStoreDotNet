@@ -20,6 +20,13 @@ namespace Trekking.Services
             return OrderOperations.GetOrderItemsForOrderId(connectionString, orderId);
         }
 
+        public static bool? CheckoutOrder(Order order)
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["TrekkingDB"]
+                .ConnectionString;
+            return OrderOperations.CheckoutOrder(connectionString, order);
+        }
+        
         public static bool? CreateOrderItem(OrderItem orderItem)
         {
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["TrekkingDB"]

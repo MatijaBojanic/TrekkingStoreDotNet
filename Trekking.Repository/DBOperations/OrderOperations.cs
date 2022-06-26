@@ -56,6 +56,27 @@ namespace Trekking.Repository.DBOperations
             }   
         }
 
+        public static bool? CheckoutOrder(string connectionString, Order order)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionString);
+                connection.Open();
+                SqlCommand insertCommand = new SqlCommand();
+                insertCommand.Connection = connection;
+                insertCommand.CommandText = "UPDATE orders set placed_at = @placedAt where id=@orderId";
+                insertCommand.Parameters.AddWithValue("placedAt", DateTime.Now);
+                insertCommand.Parameters.AddWithValue("orderId", order.OrderId);
+                int rowsAffected = insertCommand.ExecuteNonQuery();
+                connection.Close();
+                return rowsAffected == 1;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }   
+        }
+        
         public static List<OrderItem> GetOrderItemsForOrderId(string connectionString, int  orderId)
         {
             try

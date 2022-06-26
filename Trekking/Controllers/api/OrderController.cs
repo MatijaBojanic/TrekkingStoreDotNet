@@ -16,7 +16,14 @@ namespace Trekking.Controllers.api
         {
             return OrderService.GetActiveUserOrder(userId);
         }
-
+        
+        [Route("api/order/checkout")]
+        [HttpPatch]
+        public bool? CheckoutOrder(Order order)
+        {
+            return OrderService.CheckoutOrder(order);
+        }
+        
         [Route("api/order/{orderId}/order-items")]
         [HttpGet]
         public List<OrderItem> GetOrderItemsForOrderId(int orderId)
