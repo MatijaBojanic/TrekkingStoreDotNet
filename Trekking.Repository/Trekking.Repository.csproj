@@ -40,6 +40,8 @@
     <ItemGroup>
         <Compile Include="DBOperations\ProductOperations.cs" />
         <Compile Include="DBOperations\UserOperations.cs" />
+        <Compile Include="Models\DB\Order.cs" />
+        <Compile Include="Models\DB\OrderItem.cs" />
         <Compile Include="Models\DB\ProductModel.cs" />
         <Compile Include="Models\DB\UserModel.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

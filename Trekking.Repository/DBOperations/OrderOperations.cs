@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
 using Trekking.Repository.Models.DB;
 
 namespace Trekking.Repository.DBOperations
 {
-    public class ProductOperations
+    public class OrderOperations
     {
+        // Get order by user Id -> check for a non placed order with user id, if none found make new order for user id
+        
+
         public static List<ProductModel> GetProducts(string connectionString)
         {
             try
             {
+                // string connectionString = System.Configuration
+                //     .ConfigurationManager
+                //     .ConnectionStrings["TrekkingDB"]
+                //     .ConnectionString;
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
                 SqlCommand selectCommand = new SqlCommand();
@@ -22,11 +31,9 @@ namespace Trekking.Repository.DBOperations
                 while (reader.Read())
                 {
                     ProductModel product = new ProductModel();
-                    product.ProductId = reader.GetInt32(0);
+                    product.ProductId = reader.GetInt32(2);
+                    product.Price = reader.GetDecimal(0);
                     product.Name = reader.GetString(1);
-                    product.Price = reader.GetDecimal(2);
-                    product.Path = SafeGetString(reader,3);
-                    product.Description = SafeGetString(reader,4);
                     result.Add(product);
                 }
 
@@ -43,23 +50,25 @@ namespace Trekking.Repository.DBOperations
         {
             try
             {
+                // string connectionString = System.Configuration
+                //     .ConfigurationManager
+                //     .ConnectionStrings["TrekkingDB"]
+                //     .ConnectionString;
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
                 
                 SqlCommand selectCommand = new SqlCommand();
                 selectCommand.Connection = connection;
-                selectCommand.CommandText = "SELECT * FROM products WHERE id = @ProductId";
+                selectCommand.CommandText = "SELECT * FROM products WHERE ID = @ProductId";
                 selectCommand.Parameters.AddWithValue("ProductId", productId);
                 SqlDataReader reader = selectCommand.ExecuteReader();
                 
                 ProductModel product = new ProductModel();
                 reader.Read();
                 
-                product.ProductId = reader.GetInt32(0);
+                product.Price = reader.GetDecimal(0);
                 product.Name = reader.GetString(1);
-                product.Price = reader.GetDecimal(2);
-                product.Path = reader.GetString(3);
-                product.Description = reader.GetString(4);
+                product.ProductId = reader.GetInt32(2);
 
 
                 connection.Close();
@@ -77,18 +86,22 @@ namespace Trekking.Repository.DBOperations
         {
             try
             {
+                // string connectionString = System.Configuration
+                //     .ConfigurationManager
+                //     .ConnectionStrings["TrekkingDB"]
+                //     .ConnectionString;
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
 
 
                 SqlCommand insertCommand = new SqlCommand();
                 insertCommand.Connection = connection;
-                insertCommand.CommandText = "INSERT INTO products ( name, price, description) " +
-                                            "VALUES ( @name, @price, @description)";
+                insertCommand.CommandText = "INSERT INTO products ( name, price) " +
+                                            "VALUES ( @name, @price)";
 
+                // insertCommand.Parameters.AddWithValue("id", product.ProductID);
                 insertCommand.Parameters.AddWithValue("name", product.Name);
                 insertCommand.Parameters.AddWithValue("price", product.Price);
-                insertCommand.Parameters.AddWithValue("description", product.Description ?? "" );
 
                 int rowsAffected = insertCommand.ExecuteNonQuery();
 
@@ -108,6 +121,10 @@ namespace Trekking.Repository.DBOperations
             {
                 try
                 {
+                    // string connectionString = System.Configuration
+                    //     .ConfigurationManager
+                    //     .ConnectionStrings["TrekkingDB"]
+                    //     .ConnectionString;
                     connection.ConnectionString = connectionString;
                     connection.Open();
 
@@ -116,9 +133,9 @@ namespace Trekking.Repository.DBOperations
                     updateCommand.CommandText = "Update products " +
                                                 "SET name = @Name, " +
                                                 "price = @Price " +
-                                                "WHERE ProductId = @ProductId";
+                                                "WHERE ProductId = @ProductID";
 
-                    updateCommand.Parameters.AddWithValue("ProductId", product.ProductId);
+                    updateCommand.Parameters.AddWithValue("ProductID", product.ProductId);
                     updateCommand.Parameters.AddWithValue("Name", product.Name);
                     updateCommand.Parameters.AddWithValue("Price", product.Price);
 
@@ -141,14 +158,18 @@ namespace Trekking.Repository.DBOperations
             {
                 try
                 {
+                    // string connectionString = System.Configuration
+                    //     .ConfigurationManager
+                    //     .ConnectionStrings["TrekkingDB"]
+                    //     .ConnectionString;
                     connection.ConnectionString = connectionString; 
                     connection.Open();
 
                     SqlCommand deleteCommand = new SqlCommand();
                     deleteCommand.Connection = connection;
                     deleteCommand.CommandText = "DELETE FROM products WHERE " +
-                                                "id = @ProductId";
-                    deleteCommand.Parameters.AddWithValue("ProductId", productId);
+                                                "id = @ProductID";
+                    deleteCommand.Parameters.AddWithValue("ProductID", productId);
 
                     int rowsAffected = deleteCommand.ExecuteNonQuery(); 
 
@@ -162,11 +183,5 @@ namespace Trekking.Repository.DBOperations
             }
         }
         
-        public static string SafeGetString(SqlDataReader reader, int colIndex)
-        {
-            if(!reader.IsDBNull(colIndex))
-                return reader.GetString(colIndex);
-            return string.Empty;
-        }
     }
 }

@@ -16,8 +16,8 @@ namespace Trekking.Repository.DBOperations
                     connection.Open();
                     SqlCommand userCommand = new SqlCommand();
                     userCommand.Connection = connection;
-                    userCommand.CommandText = "SELECT * FROM users WHERE name=@Name and password=@Password";
-                    userCommand.Parameters.AddWithValue("Name", userData.Name);
+                    userCommand.CommandText = "SELECT * FROM users WHERE email=@Email and password=@Password";
+                    userCommand.Parameters.AddWithValue("Email", userData.Email);
                     userCommand.Parameters.AddWithValue("Password", userData.Password);
 
                     SqlDataReader reader = userCommand.ExecuteReader();
@@ -26,7 +26,9 @@ namespace Trekking.Repository.DBOperations
                     {
                         return null;
                     }
-                    
+
+                    userData.UserId = reader.GetInt32(0);
+                    userData.Role = reader.GetString(8);
                     connection.Close();
                     return userData;
                 }
@@ -46,8 +48,8 @@ namespace Trekking.Repository.DBOperations
                     connection.Open();
                     SqlCommand userCommand = new SqlCommand();
                     userCommand.Connection = connection;
-                    userCommand.CommandText = "INSERT INTO users(name, password) values(@Name, @Password)";
-                    userCommand.Parameters.AddWithValue("Name", userData.Name);
+                    userCommand.CommandText = "INSERT INTO users(email, password) values(@Email, @Password)";
+                    userCommand.Parameters.AddWithValue("Email", userData.Email);
                     userCommand.Parameters.AddWithValue("Password", userData.Password);
 
                     SqlDataReader reader = userCommand.ExecuteReader();

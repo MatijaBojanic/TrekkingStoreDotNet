@@ -7,9 +7,74 @@
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/Content/bootstrap.css"/>
     @Styles.Render("~/Content/css")
-
+    <script src="/Scripts/jquery-3.3.1.js"></script>
     </head>
-<body>
-    @RenderBody()
+<body class="bg-light">
+
+<div class="modal fade py-5" tabindex="-1" role="dialog" aria-hidden="true" id="modalSignin">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <!-- <h5 class="modal-title">Modal title</h5> -->
+                <h2 class="fw-bold mb-0">Create a new product</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body p-5 pt-0">
+                
+                <form action="/api/products" method="POST" target="dummyframe">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control rounded-3" id="Name" name="Name" placeholder="name@example.com">
+                        <label for="Name">Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control rounded-3" id="Price" name="Price" placeholder="Password">
+                        <label for="Price">Price</label>
+                    </div>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary"
+                            type="submit"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">Create Product</button>
+                </form>
+                
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container">
+        <a href="/" class="navbar-brand">Trekking</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Products</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/order/checkout" class="nav-link">Checkout</a>
+                </li>
+                <li class="nav-item" id="signupbtn">
+                    <a href="/user/register" class="nav-link">Sign Up</a>
+                </li>
+                <li class="nav-item" id="loginbtn">
+                    <a href="/user/login" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item" id="logoutbtn">
+                    <a href="/" class="nav-link" id="logoutAnchor">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+@RenderBody()
 </body>
+<script src="/Scripts/UserManagment/loginAuthentication.js"></script>
 </html>

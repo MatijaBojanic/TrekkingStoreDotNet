@@ -4,50 +4,39 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-    <div class="container">
-        <a href="" class="navbar-brand">Products</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navmenu">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a href="#products" class="nav-link">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#products" class="nav-link">Products2</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#products" class="nav-link">Products3</a>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
-</nav>
-<section class="bg-dark text-light p-5 text-center">
+
+
+<section class="bg-dark text-light p-5 pt-3 text-center">
     <div class="container">
         <div class="input-group">
           <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="search-input-field" />
-          <button type="button" class="btn btn-primary" id="main-search-button">search</button>
+          <button type="button" class="btn btn-primary" id="main-search-button">SEARCH</button>
         </div>
     </div>
 </section>
 
-<section class="p-5 text-center bg-light" id="results-section">
+<div class="p-3 justify-content-end hidden" id="createbuttonsec">
+        
+</div>
+
+<section class="p-5 pt-2 text-center bg-light" id="results-section">
+
+    
+    
     <div class="album py-5 ">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="products-table">
             </div>
         </div>
     </div>
-    
-  <nav >
-  <ul class="pagination justify-content-center" id="pager-section">
-  </ul>
-  </nav>
+
+    <nav >
+        <ul class="pagination justify-content-center" id="pager-section">
+        </ul>
+    </nav>
 </section>
 
+<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+
+<script src="~/Scripts/UserManagment/productsAuthentication.js"></script>
 <script src="~/Scripts/ProductsJs/products.js"></script>

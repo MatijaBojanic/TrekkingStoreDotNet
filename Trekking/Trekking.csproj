@@ -132,6 +132,7 @@
         <Compile Include="Controllers\api\ProductsController.cs" />
         <Compile Include="Controllers\api\UserController.cs" />
         <Compile Include="Controllers\HomeController.cs" />
+        <Compile Include="Controllers\OrderController.cs" />
         <Compile Include="Controllers\ProductController.cs" />
         <Compile Include="Controllers\UserController.cs" />
         <Compile Include="Global.asax.cs">
@@ -294,12 +295,15 @@
         <Content Include="Scripts\umd\popper.js.map" />
         <Content Include="Scripts\umd\popper.min.js" />
         <Content Include="Scripts\umd\popper.min.js.map" />
+        <Content Include="Scripts\UserManagment\loginAuthentication.js" />
+        <Content Include="Scripts\UserManagment\login.js" />
+        <Content Include="Scripts\UserManagment\productsAuthentication.js" />
         <Content Include="Views\Home\HelloWorld.cshtml" />
-        <Content Include="Views\Product\GetProduct.cshtml" />
+        <Content Include="Views\Order\Show.cshtml" />
         <Content Include="Views\Product\Index.cshtml" />
-        <Content Include="Views\Product\PostProduct.cshtml" />
         <Content Include="Views\Product\Show.cshtml" />
         <Content Include="Views\Shared\_MainLayout.cshtml" />
+        <Content Include="Views\User\Login.cshtml" />
         <Content Include="Views\User\Register.cshtml" />
         <Content Include="Web.config" />
         <Content Include="Web.Debug.config">

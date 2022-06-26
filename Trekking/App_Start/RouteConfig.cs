@@ -25,16 +25,16 @@ namespace Trekking
                 defaults: new {controller = "Product", action = "Show"}
             );
             
-            // routes.MapRoute(
-            //     name: "Products",
-            //     url: "products/{productId}",
-            //     defaults: new {controller = "Product", action = "Show"}
-            // );
-            //
+            routes.MapRoute(
+                name: "Checkout",
+                url: "order/checkout",
+                defaults: new {controller = "Order", action = "Show"}
+            );
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional}
+                defaults: new {controller = "Product", action = "Index", id = UrlParameter.Optional}
             );
 
         }

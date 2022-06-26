@@ -12,21 +12,8 @@ namespace Trekking.Controllers
         
         public ActionResult Show(string productId)
         {
-            
             return View();
         }
-        
-        // GET: Product
-        public ActionResult GetProduct(string productId)
-        {
-            return View();
-        }
-        
-        // POST: Product
-        public ActionResult PostProduct(string productId)
-        {
-            
-            return View();
-        }
+
     }
 }

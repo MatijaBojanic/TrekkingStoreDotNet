@@ -18,7 +18,10 @@ fetchProductsJSON().then(products=>{
         createPagers(foundProducts)
         setPagerActive(1)
     }
+    
 })
+
+
 
 async function fetchProductsJSON() {
     const response = await fetch('http://localhost:5000/api/products');
@@ -74,13 +77,35 @@ function createProductCard(product, productTable){
     buttonView.classList.add("btn")
     buttonView.classList.add('btn-sm')
     buttonView.classList.add("btn-outline-secondary")
-
     buttonView.innerText = "View"
+
+    let buttonAddToCart= document.createElement('button')
+    buttonAddToCart.type = "button"
+    buttonAddToCart.classList.add("addtocartbutton")
+    buttonAddToCart.classList.add("btn")
+    buttonAddToCart.classList.add('btn-sm')
+    buttonAddToCart.classList.add("btn-outline-secondary")
+    buttonAddToCart.innerText = "Add To Cart"
+    buttonAddToCart.onclick = function() {
+        // TODO: Actually add it to the order
+        console.log(product);
+    }
+    
     let small = document.createElement("small")
     small.classList.add("text-muted")
-    small.innerText = "TEST TEST"
+    small.innerText = product.Name
 
     cardButtons.appendChild(buttonView)
+    
+    let trekkinguser = JSON.parse(localStorage.getItem('trekkinguser'));
+    if(trekkinguser?.Role==="admin") {
+    
+    }
+    
+    
+    
+    cardButtons.appendChild(buttonAddToCart)
+
     cardDescriptionContainer.appendChild(cardButtons)
     cardDescriptionContainer.appendChild(small)
     cardBody.appendChild(cardDescription)
@@ -167,8 +192,9 @@ function getSearchWord(){
 }
 
 function searchProducts(searchWord, products){
-    console.log(products)
     return products.filter(products=>{
+        console.log(products.Name)
         return products.Name.toLowerCase().includes(searchWord.toLowerCase())
     })
 }
+
