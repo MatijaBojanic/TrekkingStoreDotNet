@@ -36,18 +36,15 @@ namespace Trekking.Repository.DBOperations
                     readerNew.Read();
                     order.OrderId = readerNew.GetInt32(0);
                     order.UserId = readerNew.GetInt32(1);
-                    order.Price = readerNew.GetDecimal(2);
-                    if(!readerNew.IsDBNull(3))
-                        order.PlacedAt = readerNew.GetDateTime(3);
+                    if(!readerNew.IsDBNull(2))
+                        order.PlacedAt = readerNew.GetDateTime(2);
                 }
                 else
                 {
                     order.OrderId = reader.GetInt32(0);
                     order.UserId = reader.GetInt32(1);
-                    order.Price = reader.GetDecimal(2);
-                    
-                    if(!reader.IsDBNull(3))
-                        order.PlacedAt = reader.GetDateTime(3);    
+                    if(!reader.IsDBNull(2))
+                        order.PlacedAt = reader.GetDateTime(2);    
                 }
                 
                 connection.Close();

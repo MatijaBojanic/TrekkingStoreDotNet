@@ -1,5 +1,15 @@
 ﻿var currentPage = 1
 var foundProducts = []
+var userId = null
+var order = null
+let trekkinguser = JSON.parse(localStorage.getItem('trekkinguser'));
+if(trekkinguser) {
+    userId = trekkinguser.UserId
+    fetchOrderJSON(userId).then(result=>{
+        console.log(result)
+        order = result;
+    })
+}
 
 fetchProductsJSON().then(products=>{
     currentPage = 1
@@ -21,6 +31,12 @@ fetchProductsJSON().then(products=>{
     
 })
 
+
+async function fetchOrderJSON(userId) {
+    console.log('http://localhost:5000/api/user/'+userId+'/order')
+    const response = await fetch('http://localhost:5000/api/user/'+userId+'/order');
+    return await response.json();
+}
 
 
 async function fetchProductsJSON() {
@@ -86,8 +102,24 @@ function createProductCard(product, productTable){
         if(!trekkinguser) {
             window.location.href = "/user/login" 
         }
-        // TODO: Actually add it to the order
-        console.log(product);
+        else{
+            console.log(order)
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:5000/api/order-items",
+                data:{ OrderId:order.OrderId, ProductId:product.ProductId},
+                success: function(data){
+                    if(!data){
+                        alert('Could not add to cart')
+                    }
+                    else{
+                        alert('Item added to cart')
+                    }
+                }
+            })
+            
+        }
+        // console.log(product);
     }
     
     let small = document.createElement("small")

@@ -8,11 +8,13 @@
         $('#loginbtn').show()
         $('#signupbtn').show()
         $('#logoutbtn').hide()
+        $('#checkoutbtn').hide()
     }
     else {
         $('#loginbtn').hide()
         $('#signupbtn').hide()
         $('#logoutbtn').show()
+        $('#checkoutbtn').show()
     }
 })
 
