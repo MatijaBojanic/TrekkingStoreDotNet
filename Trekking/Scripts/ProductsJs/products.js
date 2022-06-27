@@ -69,8 +69,9 @@ function createProductCard(product, productTable){
     cardShadow.classList.add('card')
     cardShadow.classList.add('shadow-sm')
 
+    console.log(product)
     let thumbnailImg= document.createElement("img")
-    thumbnailImg.src="/Content/Resources/product-1.png"
+    thumbnailImg.src= (product.Path!=null && product.Path!="")? product.Path: "/Content/Resources/product-1.png"
     thumbnailImg.classList.add('bd-placeholder-img')
     thumbnailImg.classList.add('card-img-top')
     thumbnailImg.setAttribute('width' , "100%")

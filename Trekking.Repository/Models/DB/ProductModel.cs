@@ -11,5 +11,7 @@
         public string Description { get; set; }
         
         public string Path { get; set;  }
+        
+        public byte[] ProductImage { get; set; }
     }
 }

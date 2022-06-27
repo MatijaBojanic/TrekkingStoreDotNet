@@ -83,12 +83,13 @@ namespace Trekking.Repository.DBOperations
 
                 SqlCommand insertCommand = new SqlCommand();
                 insertCommand.Connection = connection;
-                insertCommand.CommandText = "INSERT INTO products ( name, price, description) " +
-                                            "VALUES ( @name, @price, @description)";
+                insertCommand.CommandText = "INSERT INTO products ( name, price, path, description) " +
+                                            "VALUES ( @name, @price, @path, @description)";
 
                 insertCommand.Parameters.AddWithValue("name", product.Name);
                 insertCommand.Parameters.AddWithValue("price", product.Price);
                 insertCommand.Parameters.AddWithValue("description", product.Description ?? "" );
+                insertCommand.Parameters.AddWithValue("path", product.Path ?? "");
 
                 int rowsAffected = insertCommand.ExecuteNonQuery();
 
