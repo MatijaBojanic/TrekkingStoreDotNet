@@ -59,7 +59,6 @@ function createRowsForOrderItems(orderItems, products){
     for(let i = 1; i <= orderItems.length; i++ ){
         let orderItem = orderItems[i-1]
         let product = products.find(product => product.ProductId === orderItem.ProductId)
-        console.log(products)
         let rowContainer = document.createElement('div');
         rowContainer.classList.add('row')
         rowContainer.classList.add('mb-4')
@@ -72,7 +71,7 @@ function createRowsForOrderItems(orderItems, products){
         imgContainer.classList.add('col-lg-2')
         imgContainer.classList.add('col-xl-2"')
         let img = document.createElement('img')
-        img.src = "/Content/Resources/product-1.png"
+        img.src = (product.Path!=null && product.Path!="") ? product.Path :"/Content/Resources/product-1.png"
         img.classList.add("img-fluid")
         img.classList.add("rounded-3")
         img.alt="Cotton T-shirt"
@@ -87,7 +86,7 @@ function createRowsForOrderItems(orderItems, products){
         let description = document.createElement("h6")
         description.classList.add("text-black")
         description.classList.add("mb-0")
-        description.innerText = product.Description?.substring(30) +"..."
+        description.innerText = product.Description?.substring(0,30) + "..."
         
         let buttonContainer = document.createElement('div')
         buttonContainer.classList.add("col-md-3")
