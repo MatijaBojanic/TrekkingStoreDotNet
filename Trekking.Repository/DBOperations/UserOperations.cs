@@ -46,13 +46,13 @@ namespace Trekking.Repository.DBOperations
                 {
                     connection.ConnectionString = connectionString;
                     connection.Open();
+                    
                     SqlCommand userCommand = new SqlCommand();
                     userCommand.Connection = connection;
                     userCommand.CommandText = "INSERT INTO users(email, password) values(@Email, @Password)";
                     userCommand.Parameters.AddWithValue("Email", userData.Email);
                     userCommand.Parameters.AddWithValue("Password", userData.Password);
-
-                    SqlDataReader reader = userCommand.ExecuteReader();
+                    
                     int rowsAffected = userCommand.ExecuteNonQuery();
 
                     connection.Close();
